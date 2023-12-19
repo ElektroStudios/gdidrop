@@ -42,7 +42,7 @@ The program will generate the .gdi file and the track files in the same director
 The program will return these exit codes:
 
 | Exit Code  | Meaning  |
-|---|---|---|---|---|
+|---|---|
 | 0  | Conversion was successful  |
 | 1  | Cue file not found  | 
 |  2 | Unexpected error  |  
