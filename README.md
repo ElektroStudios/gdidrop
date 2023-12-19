@@ -57,19 +57,19 @@ This program will preserve the source track filenames and add a prefix to the en
 
 For example, having this folder structure for **Seaman** game from **Redump**:
 
-📁Seaman (USA)
-------📄 Seaman (USA) (Track 1).bin
-------📄 Seaman (USA) (Track 2).bin
-------📄 Seaman (USA) (Track 3).bin
-------💿Seaman (USA).cue
+    📁Seaman (USA)
+      📄 Seaman (USA) (Track 1).bin 
+      📄 Seaman (USA) (Track 2).bin 
+      📄 Seaman (USA) (Track 3).bin 
+      💿Seaman (USA).cue
 
 **gdidrop** will generate output files having these names:
 
-📁Seaman (USA)
-------📄 Seaman (USA) (Track 1) [gdidrop].bin
-------📄 Seaman (USA) (Track 2) [gdidrop].raw
-------📄 Seaman (USA) (Track 3) [gdidrop].bin
-------💿Seaman (USA).gdi
+    📁Seaman (USA)
+      📄 Seaman (USA) (Track 1) [gdidrop].bin
+      📄 Seaman (USA) (Track 2) [gdidrop].raw
+      📄 Seaman (USA) (Track 3) [gdidrop].bin
+      💿Seaman (USA).gdi
 
 And the content of the generated .gdi file will be like this:
 
