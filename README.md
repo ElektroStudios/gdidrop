@@ -2,18 +2,16 @@
 
 # What's this?
 
-This is a modification of the gdidrop program, that converts Dreamcast Redump Images (bin/cue) to GDI Images (bin/raw/gdi), and which was originally developed by @[feitys-tan](https://github.com/feyris-tan):
+This is a modification of the gdidrop program, that converts Dreamcast Redump Images (bin/cue) to GDI Images (bin/raw/gdi), and which was originally developed by @[feitys-tan](https://github.com/feyris-tan): https://github.com/feyris-tan/gdidrop
 
-https://github.com/feyris-tan/gdidrop
-
-⚠️ This program is not intended to convert **Redump**'s bin/cue of unlicensed CD-ROM images (e.g. 'Dux', 'Hermes', 'Irides', 'Pier Solar', 'Sturmwind', etc). You should use Redump2CDI to do that: https://dreamcast.wiki/Redump2CDI
+⚠️ This program is not intended to convert **Redump**'s bin/cue of unlicensed CD-ROM images (e.g. 'Dux', 'Hermes', 'Irides', 'Pier Solar', 'Sturmwind', etc). You should use **Redump2CDI** to do that: https://dreamcast.wiki/Redump2CDI
 
 # What changes I made to the program?
 
  - Added basic support for command-line usage. Very helpful to
-   automate batch-conversions and catch the exit code.
+   automate bulk file conversions.
  - Added basic error-handling features.
- - Now the conversion algorithm will use original filenames instead of
+ - Now the program will preserve original filenames instead of
    "track1.bin", "track2.raw", etc.
  - Added a informative message box that will be shown when the
    conversion operation is completed.
@@ -25,7 +23,7 @@ https://github.com/feyris-tan/gdidrop
 
 Probably not. The modifications I made were made out of personal need to automate the conversion of thousands of bin/cue discs from Redump. So unless a new need arises or there is some critical error that I haven't caught, I won't make any more changes. 
 
-Note that C# is not my main language, so the modifications I made were with the minimum necessary effort, making sure everything worked as expected, but implemented in a dirty and fastest possible way.
+Note that C# is not my main language, so the modifications I made were with the minimum necessary effort, making sure everything worked as expected, but implemented in a dirty (ugly) and fastest possible way.
 
 # How to use it?
 - Either download a release here from Github and run the exe file.
@@ -79,7 +77,7 @@ And the content of the generated .gdi file will look like this:
 
 This file name formatting will work as expected (at least for all the converted GDI games that I tried) with DEMUL, Flycast and redream emulators, but it may be incompatible with other software.
 
-Note: I decided to add the '[gdidrop]' suffix to the file names for two reasons, the first is to place an indicator to easy identify disc images generated with **gdidrop**, which will be of help to guess the cause of the problem if in the future the converted image presents any issue in a emulator, and the second reason is to avoid file name collisions since the generated output files shares the .bin file extension.
+Note: I decided to add the '[gdidrop]' suffix to the file names for two reasons, the first is to place an indicator to easy identify disc images generated with **gdidrop**, which will be of help to keep track the cause of the problem if in the future a converted GDI image presents any issue in a emulator, and the second reason is to avoid file name collisions since the generated output files shares the .bin file extension.
 
 # Legal stuff
 This software contains CueSharp licensed under the 2-clause BSD License found here: [here](https://wyday.com/bsd-license.php)
