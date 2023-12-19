@@ -1,4 +1,5 @@
 
+
 # What's this?
 
 This is a modification of the gdidrop program, which converts Dreamcast Redump Images (bin/cue) to GDI Images (bin/raw/gdi), originally developed by @[feitys-tan](https://github.com/feyris-tan):
@@ -46,6 +47,40 @@ The program will return one of these exit codes:
 | 0  | Conversion was successful  |
 | 1  | Cue file not found  | 
 |  2 | Unexpected error  |  
+
+# Additional information
+
+This program is not intended to convert **Redump**'s bin/cue of unlicensed CD-ROM images (e.g. 'Dux', 'Hermes', 'Irides', 'Pier Solar', 'Sturmwind', etc). You should use Redump2CDI to do that: https://dreamcast.wiki/Redump2CDI
+
+--------------
+This program will preserve the source track filenames and add a prefix to the end of the file name. 
+
+For example, having this folder structure for **Seaman** game from **Redump**:
+
+📁Seaman (USA)
+------📄 Seaman (USA) (Track 1).bin
+------📄 Seaman (USA) (Track 2).bin
+------📄 Seaman (USA) (Track 3).bin
+------💿Seaman (USA).cue
+
+**gdidrop** will generate output files having these names:
+
+📁Seaman (USA)
+------📄 Seaman (USA) (Track 1) [gdidrop].bin
+------📄 Seaman (USA) (Track 2) [gdidrop].raw
+------📄 Seaman (USA) (Track 3) [gdidrop].bin
+------💿Seaman (USA).gdi
+
+And the content of the generated .gdi file will be like this:
+
+    3
+    1 0 4 2352 "Seaman (USA) (Track 1) [gdidrop].bin" 0
+    2 1744 0 2352 "Seaman (USA) (Track 2) [gdidrop].raw" 0
+    3 45000 4 2352 "Seaman (USA) (Track 3) [gdidrop].bin" 0
+
+These file name formatting will work as expected with DEMUL emulator, but it may be incompatible with other software.
+
+Note: I decided to add the '[gdidrop]' prefix to the file names for two reasons, the first is to place an indicator to easy identify disc images generated with **gdidrop**, which will be of help to guess the cause of the problem if in the future the converted image presents any issue in a emulator, and the second reason is to avoid file name collisions since the generated output files shares the .bin file extension.
 
 # Legal stuff
 This software contains CueSharp licensed under the 2-clause BSD License found here: [here](https://wyday.com/bsd-license.php)
