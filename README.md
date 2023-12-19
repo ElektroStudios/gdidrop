@@ -39,7 +39,7 @@ Simply like this:
 
 The program will generate the .gdi file and the track files in the same directory where the cue file is.
 
-The program will return these exit codes:
+The program will return one of these exit codes:
 
 | Exit Code  | Meaning  |
 |---|---|
