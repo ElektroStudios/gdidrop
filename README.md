@@ -70,7 +70,7 @@ For example, having this folder structure for **Seaman** game from **Redump**:
       📄 Seaman (USA) (Track 3) [gdidrop].bin
       💿 Seaman (USA).gdi
 
-And the content of the generated .gdi file will be like this:
+And the content of the generated .gdi file will look like this:
 
     3
     1 0 4 2352 "Seaman (USA) (Track 1) [gdidrop].bin" 0
