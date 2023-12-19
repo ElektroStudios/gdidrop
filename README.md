@@ -39,6 +39,14 @@ Simply like this:
 
 The program will generate the .gdi file and the track files in the same directory where the cue file is.
 
+The program will return these exit codes:
+
+| Exit Code  | Meaning  |
+|---|---|---|---|---|
+| 0  | Conversion was successful  |
+| 1  | Cue file not found  | 
+|  2 | Unexpected error  |  
+
 # Legal stuff
 This software contains CueSharp licensed under the 2-clause BSD License found here: [here](https://wyday.com/bsd-license.php)
 
