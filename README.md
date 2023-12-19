@@ -63,7 +63,7 @@ For example, having this folder structure for **Seaman** game from **Redump**:
       📄 Seaman (USA) (Track 3).bin 
       💿 Seaman (USA).cue
 
-**gdidrop** will generate output files having these names:
+**gdidrop** will generate output files with these names:
 
     📁Seaman (USA)
       📄 Seaman (USA) (Track 1) [gdidrop].bin
@@ -78,7 +78,7 @@ And the content of the generated .gdi file will be like this:
     2 1744 0 2352 "Seaman (USA) (Track 2) [gdidrop].raw" 0
     3 45000 4 2352 "Seaman (USA) (Track 3) [gdidrop].bin" 0
 
-These file name formatting will work as expected with DEMUL emulator, but it may be incompatible with other software.
+These file name formatting will work as expected with DEMUL, Flycast and redream emulators (at least all the converted GDI games that I tried), but it may be incompatible with other software.
 
 Note: I decided to add the '[gdidrop]' suffix to the file names for two reasons, the first is to place an indicator to easy identify disc images generated with **gdidrop**, which will be of help to guess the cause of the problem if in the future the converted image presents any issue in a emulator, and the second reason is to avoid file name collisions since the generated output files shares the .bin file extension.
 
