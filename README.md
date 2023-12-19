@@ -1,7 +1,7 @@
 
 # What's this?
 
-This is a modification of the gdidrop program, which converts Dreamcast Redump Images (bin/cue) and convert them to GDI Images (bin/raw/gdi), originally developed by @[feitys-tan](https://github.com/feyris-tan):
+This is a modification of the gdidrop program, which converts Dreamcast Redump Images (bin/cue) to GDI Images (bin/raw/gdi), originally developed by @[feitys-tan](https://github.com/feyris-tan):
 
 https://github.com/feyris-tan/gdidrop
 
