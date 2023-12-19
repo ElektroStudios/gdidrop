@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -94,64 +96,90 @@ namespace gdidrop
             }
         }
 
-        class ThreadDto
+       public class ThreadDto
         {
             public FileInfo cueFileInfo;
         }
 
-        private void DoConversion(object threadDto)
+        public void DoConversion(object threadDto)
         {
-            ThreadDto dto = (ThreadDto) threadDto;
-            DirectoryInfo workingDirectory = dto.cueFileInfo.Directory;
-            CueSheet cueSheet = new CueSheet(dto.cueFileInfo.FullName);
-            int currentSector = 0;
-            StringWriter gdiOutput = new StringWriter();
-
-            Invoke((MethodInvoker) delegate { progressBar1.Maximum = cueSheet.Tracks.Length; });
-            gdiOutput.WriteLine(cueSheet.Tracks.Length.ToString());
-            for (int i = 0; i < cueSheet.Tracks.Length; i++)
+            try
             {
-                Track currentTrack = cueSheet.Tracks[i];
-                string inputTrackFilePath = Path.Combine(workingDirectory.FullName, currentTrack.DataFile.Filename);
-                bool canPerformFullCopy = currentTrack.Indices.Length == 1;
-                string outputTrackFileName = string.Format(
-                    "track{0}.{1}",
-                    currentTrack.TrackNumber,
-                    currentTrack.TrackDataType == DataType.AUDIO ? "raw" : "bin");
-                string outputTrackFilePath = Path.Combine(workingDirectory.FullName, outputTrackFileName);
-                int sectorAmount;
-                if (canPerformFullCopy)
+                ThreadDto dto = (ThreadDto)threadDto;
+                DirectoryInfo workingDirectory = dto.cueFileInfo.Directory;
+                CueSheet cueSheet = new CueSheet(dto.cueFileInfo.FullName);
+                int currentSector = 0;
+                StringWriter gdiOutput = new StringWriter();
+
+                if (formLoaded)
                 {
-                    File.Copy(inputTrackFilePath, outputTrackFilePath);
-                    sectorAmount = (int)(new FileInfo(inputTrackFilePath).Length / 2352);
-                }
-                else
-                {
-                    int gapOffset = CountIndexFrames(currentTrack.Indices[1]);
-                    sectorAmount = CopyFileWithGapOffset(inputTrackFilePath, outputTrackFilePath, gapOffset);
-                    currentSector += gapOffset;
+                    Invoke((MethodInvoker)delegate { progressBar1.Maximum = cueSheet.Tracks.Length; });
                 }
 
-                int gap = 0;
+                gdiOutput.WriteLine(cueSheet.Tracks.Length.ToString());
+                for (int i = 0; i < cueSheet.Tracks.Length; i++)
+                {
+                    Track currentTrack = cueSheet.Tracks[i];
+                    string inputTrackFilePath = Path.Combine(workingDirectory.FullName, currentTrack.DataFile.Filename);
+                    bool canPerformFullCopy = currentTrack.Indices.Length == 1;
 
-                gdiOutput.WriteLine("{0} {1} {2} 2352 {3} {4}", 
-                    currentTrack.TrackNumber, 
-                    currentSector,
-                    currentTrack.TrackDataType == DataType.AUDIO ? "0" : "4",
-                    outputTrackFileName,
-                    gap);
+                    string inputTrackFilName = Path.GetFileNameWithoutExtension(currentTrack.DataFile.Filename);
 
-                Invoke((MethodInvoker)delegate { progressBar1.Value++; });
-                currentSector += sectorAmount;
+                    string outputTrackFileName = string.Format(
+                        "{0} [gdidrop].{1}",
+                        inputTrackFilName,
+                        currentTrack.TrackDataType == DataType.AUDIO ? "raw" : "bin");
+                    string outputTrackFilePath = Path.Combine(workingDirectory.FullName, outputTrackFileName);
+                    int sectorAmount;
+                    if (canPerformFullCopy)
+                    {
+                        File.Copy(inputTrackFilePath, outputTrackFilePath);
+                        sectorAmount = (int)(new FileInfo(inputTrackFilePath).Length / 2352);
+                    }
+                    else
+                    {
+                        int gapOffset = CountIndexFrames(currentTrack.Indices[1]);
+                        sectorAmount = CopyFileWithGapOffset(inputTrackFilePath, outputTrackFilePath, gapOffset);
+                        currentSector += gapOffset;
+                    }
 
-                if (currentTrack.Comments.Contains("HIGH-DENSITY AREA"))
-                    if (currentSector < 45000)
-                        currentSector = 45000;
+                    int gap = 0;
+
+                    gdiOutput.WriteLine("{0} {1} {2} 2352 \"{3}\" {4}",
+                        currentTrack.TrackNumber,
+                        currentSector,
+                        currentTrack.TrackDataType == DataType.AUDIO ? "0" : "4",
+                        outputTrackFileName,
+                        gap);
+                    if (formLoaded)
+                    {
+                        Invoke((MethodInvoker)delegate { progressBar1.Value++; });
+                    }
+                    currentSector += sectorAmount;
+
+                    if (currentTrack.Comments.Contains("HIGH-DENSITY AREA"))
+                        if (currentSector < 45000)
+                            currentSector = 45000;
+                }
+
+                string gdiOutputPath = Path.Combine(workingDirectory.FullName, $"{Path.GetFileNameWithoutExtension(dto.cueFileInfo.FullName)}.gdi");
+                File.WriteAllText(gdiOutputPath, gdiOutput.ToString());
+                inProgress = false;
+                if (formLoaded)
+                {
+                    MessageBox.Show("Operation Completed!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            
-            string gdiOutputPath = Path.Combine(workingDirectory.FullName, "disc.gdi");
-            File.WriteAllText(gdiOutputPath, gdiOutput.ToString());
-            inProgress = false;
+            catch (Exception ex)
+            {
+                if (formLoaded)
+                {
+                    MessageBox.Show("ERROR:" + ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } else {
+                        throw ex;
+            }
+            }
+
         }
 
         private int CountIndexFrames(Index index)
@@ -203,6 +231,19 @@ namespace gdidrop
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private bool formLoaded = false;
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+            formLoaded = true;
         }
     }
 }
