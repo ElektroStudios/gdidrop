@@ -53,7 +53,7 @@ The program will return one of these exit codes:
 This program is not intended to convert **Redump**'s bin/cue of unlicensed CD-ROM images (e.g. 'Dux', 'Hermes', 'Irides', 'Pier Solar', 'Sturmwind', etc). You should use Redump2CDI to do that: https://dreamcast.wiki/Redump2CDI
 
 --------------
-This program will preserve the source track filenames and add a prefix to the end of the file name. 
+This program will preserve the source track filenames and add a suffix to the end of the file name. 
 
 For example, having this folder structure for **Seaman** game from **Redump**:
 
@@ -61,7 +61,7 @@ For example, having this folder structure for **Seaman** game from **Redump**:
       📄 Seaman (USA) (Track 1).bin 
       📄 Seaman (USA) (Track 2).bin 
       📄 Seaman (USA) (Track 3).bin 
-      💿Seaman (USA).cue
+      💿 Seaman (USA).cue
 
 **gdidrop** will generate output files having these names:
 
@@ -69,7 +69,7 @@ For example, having this folder structure for **Seaman** game from **Redump**:
       📄 Seaman (USA) (Track 1) [gdidrop].bin
       📄 Seaman (USA) (Track 2) [gdidrop].raw
       📄 Seaman (USA) (Track 3) [gdidrop].bin
-      💿Seaman (USA).gdi
+      💿 Seaman (USA).gdi
 
 And the content of the generated .gdi file will be like this:
 
@@ -80,7 +80,7 @@ And the content of the generated .gdi file will be like this:
 
 These file name formatting will work as expected with DEMUL emulator, but it may be incompatible with other software.
 
-Note: I decided to add the '[gdidrop]' prefix to the file names for two reasons, the first is to place an indicator to easy identify disc images generated with **gdidrop**, which will be of help to guess the cause of the problem if in the future the converted image presents any issue in a emulator, and the second reason is to avoid file name collisions since the generated output files shares the .bin file extension.
+Note: I decided to add the '[gdidrop]' suffix to the file names for two reasons, the first is to place an indicator to easy identify disc images generated with **gdidrop**, which will be of help to guess the cause of the problem if in the future the converted image presents any issue in a emulator, and the second reason is to avoid file name collisions since the generated output files shares the .bin file extension.
 
 # Legal stuff
 This software contains CueSharp licensed under the 2-clause BSD License found here: [here](https://wyday.com/bsd-license.php)
