@@ -1,5 +1,3 @@
-
-
 # What's this?
 
 This is a modification of the gdidrop program, that converts Dreamcast Redump Images (bin/cue) to GDI Images (bin/raw/gdi), and which was originally developed by @[feitys-tan](https://github.com/feyris-tan): https://github.com/feyris-tan/gdidrop
@@ -79,6 +77,12 @@ This file name formatting will work as expected (at least for all the converted 
 
 Note: I decided to add the '[gdidrop]' suffix to the file names for two reasons, the first is to place an indicator to easy identify disc images generated with **gdidrop**, which will be of help to keep track the cause of the problem if in the future a converted GDI image presents any issue in a emulator, and the second reason is to avoid file name collisions since the generated output files shares the .bin file extension.
 
+# Legal stuff
+This software contains CueSharp licensed under the 2-clause BSD License found here: [here](https://wyday.com/bsd-license.php)
+
+The character animation playing while the program is busy is taken from easyRPG's RTP Replacement found [here](https://github.com/EasyRPG/RTP) 
+This software itself it license under 2-clause BSD as well. I'm not good with legal stuff, but I believe these licenses should be compatible. If you can help me with this stuff, please message me.
+
 ## 💪 Contributing
 
 Your contribution is highly appreciated!. If you have any ideas, suggestions, or encounter issues, feel free to open an issue. 
@@ -89,23 +93,23 @@ Your input helps make this Work better for everyone. Thank you for your support!
 
 This work is distributed for educational purposes and without any profit motive. However, if you find value in my efforts and wish to support and motivate my ongoing work, you may consider contributing financially through the following options:
 
- - ### Paypal:
-    You can donate any amount you like via **Paypal** by clicking on this button:
+<br></br>
+<p align="center"><img src="/Images/github_circle.png" height=100></p>
+<p align="center">__________________</p>
+<h3 align="center">Becoming my sponsor on Github:</h3>
+<p align="center">You can show me your support by clicking <a href="https://github.com/sponsors/ElektroStudios/">here</a>, <br align="center">contributing any amount you prefer, and unlocking rewards!</br></p>
+<br></br>
 
-    [![Donation Account](Images/Paypal_Donate.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E4RQEV6YF5NZY)
+<p align="center"><img src="/Images/paypal_circle.png" height=100></p>
+<p align="center">__________________</p>
+<h3 align="center">Making a Paypal Donation:</h3>
+<p align="center">You can donate to me any amount you like via Paypal by clicking <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E4RQEV6YF5NZY">here</a>.</p>
+<br></br>
 
- - ### Envato Market:
-   If you are a .NET developer, you may want to explore '**DevCase Class Library for .NET**', a huge set of APIs that I have on sale.
-   Almost all reusable code that you can find across my works is condensed, refined and provided through DevCase Class Library.
+<p align="center"><img src="/Images/envato_circle.png" height=100></p>
+<p align="center">__________________</p>
+<h3 align="center">Purchasing software of mine at Envato's Codecanyon marketplace:</h3>
+<p align="center">If you are a .NET developer, you may want to explore '<b>DevCase Class Library for .NET</b>', <br align="center">a huge set of APIs that I have on sale. Check out the product by clicking <a href="https://codecanyon.net/item/elektrokit-class-library-for-net/19260282">here</a></br><br align="center"><i>It also contains all piece of reusable code that you can find across the source code of my open source works.</i></p>
+<br></br>
 
-    Check out the product:
-    
-   [![DevCase Class Library for .NET](Images/DevCase_Banner.png)](https://codecanyon.net/item/elektrokit-class-library-for-net/19260282)
-
-<u>**Your support means the world to me! Thank you for considering it!**</u> 👍
-
-# Legal stuff
-This software contains CueSharp licensed under the 2-clause BSD License found here: [here](https://wyday.com/bsd-license.php)
-
-The character animation playing while the program is busy is taken from easyRPG's RTP Replacement found [here](https://github.com/EasyRPG/RTP) 
-This software itself it license under 2-clause BSD as well. I'm not good with legal stuff, but I believe these licenses should be compatible. If you can help me with this stuff, please message me.
+<h2 align="center"><u>Your support means the world to me! Thank you for considering it!</u> 👍</h2>
