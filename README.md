@@ -79,6 +79,31 @@ This file name formatting will work as expected (at least for all the converted 
 
 Note: I decided to add the '[gdidrop]' suffix to the file names for two reasons, the first is to place an indicator to easy identify disc images generated with **gdidrop**, which will be of help to keep track the cause of the problem if in the future a converted GDI image presents any issue in a emulator, and the second reason is to avoid file name collisions since the generated output files shares the .bin file extension.
 
+## 💪 Contributing
+
+Your contribution is highly appreciated!. If you have any ideas, suggestions, or encounter issues, feel free to open an issue. 
+
+Your input helps make this Work better for everyone. Thank you for your support! 🚀
+
+## 💰 Beyond Contribution 
+
+This work is distributed for educational purposes and without any profit motive. However, if you find value in my efforts and wish to support and motivate my ongoing work, you may consider contributing financially through the following options:
+
+ - ### Paypal:
+    You can donate any amount you like via **Paypal** by clicking on this button:
+
+    [![Donation Account](Images/Paypal_Donate.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E4RQEV6YF5NZY)
+
+ - ### Envato Market:
+   If you are a .NET developer, you may want to explore '**DevCase Class Library for .NET**', a huge set of APIs that I have on sale.
+   Almost all reusable code that you can find across my works is condensed, refined and provided through DevCase Class Library.
+
+    Check out the product:
+    
+   [![DevCase Class Library for .NET](Images/DevCase_Banner.png)](https://codecanyon.net/item/elektrokit-class-library-for-net/19260282)
+
+<u>**Your support means the world to me! Thank you for considering it!**</u> 👍
+
 # Legal stuff
 This software contains CueSharp licensed under the 2-clause BSD License found here: [here](https://wyday.com/bsd-license.php)
 
